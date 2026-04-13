@@ -328,9 +328,7 @@ function setOpacity(el, value, smooth) {
     el.style.opacity = value;
 }
 
-function crossfade(a, b, p) {
-    const fadeStart = 0.55;
-    const fadeEnd = 0.85;
+function crossfade(a, b, p, fadeStart, fadeEnd) {
     let t;
     if (p <= fadeStart) t = 0;
     else if (p >= fadeEnd) t = 1;
@@ -359,9 +357,9 @@ scroller
   .onStepProgress((response) => {
       const p = response.progress; // 0 → 1 as user scrolls through the pinned section
       if (response.element.id === "step-one") {
-          crossfade(bioP1, bioP2, p);
+          crossfade(bioP1, bioP2, p, 0.55, 0.85);
       } else {
-          crossfade(g3, g4, p);
+          crossfade(g3, g4, p, 0.25, 0.5);
       }
   })
   .onStepExit((response) => {
