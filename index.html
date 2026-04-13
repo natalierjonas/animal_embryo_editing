@@ -318,21 +318,25 @@ const g4 = document.getElementById("graph4");
 const bioP1 = document.getElementById("bio-p1");
 const bioP2 = document.getElementById("bio-p2");
 
-// Set initial states
 g3.style.opacity = 1;
 g4.style.opacity = 0;
 bioP1.style.opacity = 1;
 bioP2.style.opacity = 0;
 
+function setOpacity(el, value, smooth) {
+    el.style.transition = smooth ? 'opacity 0.5s ease' : 'none';
+    el.style.opacity = value;
+}
+
 function crossfade(a, b, p) {
-    const fadeStart = 0.35;
-    const fadeEnd = 0.65;
+    const fadeStart = 0.55;
+    const fadeEnd = 0.85;
     let t;
     if (p <= fadeStart) t = 0;
     else if (p >= fadeEnd) t = 1;
     else t = (p - fadeStart) / (fadeEnd - fadeStart);
-    a.style.opacity = 1 - t;
-    b.style.opacity = t;
+    setOpacity(a, 1 - t, false);
+    setOpacity(b, t, false);
 }
 
 const scroller = scrollama();
@@ -345,11 +349,11 @@ scroller
   })
   .onStepEnter((response) => {
       if (response.element.id === "step-one") {
-          bioP1.style.opacity = 1;
-          bioP2.style.opacity = 0;
+          setOpacity(bioP1, 1, true);
+          setOpacity(bioP2, 0, true);
       } else {
-          g3.style.opacity = 1;
-          g4.style.opacity = 0;
+          setOpacity(g3, 1, true);
+          setOpacity(g4, 0, true);
       }
   })
   .onStepProgress((response) => {
@@ -363,11 +367,11 @@ scroller
   .onStepExit((response) => {
       const goingDown = response.direction === "down";
       if (response.element.id === "step-one") {
-          bioP1.style.opacity = goingDown ? 0 : 1;
-          bioP2.style.opacity = goingDown ? 1 : 0;
+          setOpacity(bioP1, goingDown ? 0 : 1, true);
+          setOpacity(bioP2, goingDown ? 1 : 0, true);
       } else {
-          g3.style.opacity = goingDown ? 0 : 1;
-          g4.style.opacity = goingDown ? 1 : 0;
+          setOpacity(g3, goingDown ? 0 : 1, true);
+          setOpacity(g4, goingDown ? 1 : 0, true);
       }
   });
 
