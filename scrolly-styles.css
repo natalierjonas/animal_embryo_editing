@@ -8,7 +8,7 @@
 
 .step {
     width: 100%;
-    margin: 0 auto 20vh auto;
+    margin: 0 auto 8vh auto;
     padding: 1.25rem 1.5rem;
     background: rgba(0,0,0,0.6);
     color: white;
@@ -55,7 +55,7 @@
 }
 
 .fish-scrolly > .fish-text:last-child {
-    margin-bottom: 20vh;
+    margin-bottom: 8vh;
 }
 
 .fish-text p:last-child,
@@ -88,7 +88,7 @@
 .crossfade-step {
     position: relative;
     height: 250vh;
-    margin-bottom: 20vh;
+    margin-bottom: 8vh;
 }
 
 .crossfade-pin {
@@ -138,11 +138,12 @@
 }
 
 .blank-step {
-    height: 80vh;
+    height: 10vh;
 }
 
 #step-graph {
-    height: 200vh;
+    height: 300vh;
+    margin-bottom: 0;
 }
 
 /* Unicorn drawing margin decoration */
